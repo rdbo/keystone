@@ -1,6 +1,6 @@
 # See docs/CMake.html for instructions about how to build LLVM with CMake.
 
-cmake_minimum_required(VERSION 2.8.7)
+cmake_minimum_required(VERSION 3.10)
 
 set(LLVM_INSTALL_TOOLCHAIN_ONLY ON)
 
@@ -13,14 +13,14 @@ if(POLICY CMP0022)
   cmake_policy(SET CMP0022 NEW) # automatic when 2.8.12 is required
 endif()
 
-if (POLICY CMP0051)
+# if (POLICY CMP0051)
   # CMake 3.1 and higher include generator expressions of the form
   # $<TARGETLIB:obj> in the SOURCES property.  These need to be
   # stripped everywhere that access the SOURCES property, so we just
   # defer to the OLD behavior of not including generator expressions
   # in the output for now.
-  cmake_policy(SET CMP0051 OLD)
-endif()
+  # cmake_policy(SET CMP0051 OLD)
+# endif()
 
 if(CMAKE_VERSION VERSION_LESS 3.1.20141117)
   set(cmake_3_2_USES_TERMINAL)
@@ -339,18 +339,19 @@ include(HandleLLVMOptions)
 # Verify that we can find a Python 2 interpreter.  Python 3 is unsupported.
 # FIXME: We should support systems with only Python 3, but that requires work
 # on LLDB.
+# FIXME: Check if python interpreter was actually found
 set(Python_ADDITIONAL_VERSIONS 2.7)
-include(FindPythonInterp)
-if( NOT PYTHONINTERP_FOUND )
-  message(FATAL_ERROR
-"Unable to find Python interpreter, required for builds and testing.
+include(FindPython)
+# if( NOT PYTHONINTERP_FOUND )
+#   message(FATAL_ERROR
+# "Unable to find Python interpreter, required for builds and testing.
 
-Please install Python or specify the PYTHON_EXECUTABLE CMake variable.")
-endif()
+# Please install Python or specify the PYTHON_EXECUTABLE CMake variable.")
+# endif()
 
-if( ${PYTHON_VERSION_STRING} VERSION_LESS 2.7 )
-  message(FATAL_ERROR "Python 2.7 or newer is required")
-endif()
+# if( ${PYTHON_VERSION_STRING} VERSION_LESS 2.7 )
+#   message(FATAL_ERROR "Python 2.7 or newer is required")
+# endif()
 
 ######
 # LLVMBuild Integration

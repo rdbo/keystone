@@ -5,7 +5,7 @@
 # For Windows, be sure to copy keystone.dll or keystone.lib
 # to this directory before compiling
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 
 project(sample)
 
