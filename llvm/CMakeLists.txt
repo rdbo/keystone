@@ -346,7 +346,7 @@ include(FindPython)
 #   message(FATAL_ERROR
 # "Unable to find Python interpreter, required for builds and testing.
 
-# Please install Python or specify the PYTHON_EXECUTABLE CMake variable.")
+# Please install Python or specify the Python_EXECUTABLE CMake variable.")
 # endif()
 
 # if( ${PYTHON_VERSION_STRING} VERSION_LESS 2.7 )
@@ -379,10 +379,10 @@ endif (LLVM_USE_OPROFILE)
 
 message(STATUS "Constructing LLVMBuild project information")
 message(STATUS "LLVM targets to build: ${LLVM_TARGETS_TO_BUILD}")
-message(STATUS "Python Executable: ${PYTHON_EXECUTABLE}")
+message(STATUS "Python Executable: ${Python_EXECUTABLE}")
 message(STATUS "LLVM Build Tool: ${LLVMBUILDTOOL}")
 execute_process(
-  COMMAND ${PYTHON_EXECUTABLE} ${LLVMBUILDTOOL}
+  COMMAND ${Python_EXECUTABLE} ${LLVMBUILDTOOL}
             --native-target "${LLVM_NATIVE_ARCH}"
             --enable-targets "${LLVM_TARGETS_TO_BUILD}"
             --enable-optional-components "${LLVMOPTIONALCOMPONENTS}"
