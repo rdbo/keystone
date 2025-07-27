@@ -379,6 +379,8 @@ endif (LLVM_USE_OPROFILE)
 
 message(STATUS "Constructing LLVMBuild project information")
 message(STATUS "LLVM targets to build: ${LLVM_TARGETS_TO_BUILD}")
+message(STATUS "Python Executable: ${PYTHON_EXECUTABLE}")
+message(STATUS "LLVM Build Tool: ${LLVMBUILDTOOL}")
 execute_process(
   COMMAND ${PYTHON_EXECUTABLE} ${LLVMBUILDTOOL}
             --native-target "${LLVM_NATIVE_ARCH}"
