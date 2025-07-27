@@ -339,15 +339,14 @@ include(HandleLLVMOptions)
 # Verify that we can find a Python 2 interpreter.  Python 3 is unsupported.
 # FIXME: We should support systems with only Python 3, but that requires work
 # on LLDB.
-# FIXME: Check if python interpreter was actually found
 set(Python_ADDITIONAL_VERSIONS 2.7)
 include(FindPython)
-# if( NOT PYTHONINTERP_FOUND )
-#   message(FATAL_ERROR
-# "Unable to find Python interpreter, required for builds and testing.
+if( NOT Python_Interpreter_FOUND )
+  message(FATAL_ERROR
+"Unable to find Python interpreter, required for builds and testing.
 
-# Please install Python or specify the Python_EXECUTABLE CMake variable.")
-# endif()
+Please install Python or specify the Python_EXECUTABLE CMake variable.")
+endif()
 
 # if( ${PYTHON_VERSION_STRING} VERSION_LESS 2.7 )
 #   message(FATAL_ERROR "Python 2.7 or newer is required")
